@@ -8,7 +8,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 
 /* Set font and background color */
 body {
-  font-family: Herculanum;
+  font-family: Bookman Old Style;;
   background-color: #f0f0f0;
 }
 
@@ -34,12 +34,15 @@ header {
 }
 
 header h1 {
+  font-family: Herculanum;
   font-size: 60px;
+  font-weight: bold;
 }
 
 header p {
+  font-family: Herculanum;
   font-size: 30px;
-
+  font-weight: bold;
 }
 
 
@@ -55,27 +58,31 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #e1ede1;
 }
 
 /* Style buttons */
 .styled-button {
-  background-color: #4b5a4b;
-  color: #fff;
+  background-color: #739e70;
+  color: black;
   border: 1px solid #000;
   padding: 10px 20px;
-  border-radius: 0px;
-  font-size: 16px;
+  border-radius: 5px;
+  font-family: Bookman Old Style;
+  font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: relative;
+  outline: 2px solid transparent; /* Add a transparent border outline */
+  outline-offset: 2px; /* Adjust the outline offset as needed */
   z-index: 1;
-  width: 300px; /* Adjust the width as needed */
+  width: 250px; /* Adjust the width as needed */
   height: 50px; /* Adjust the height as needed */
+  transition: background-color 0.3s, border-color 0.3s; /* Add transition properties */
 }
 
 .styled-button:hover {
-  background-color: #23527c;
+  background-color: #a2d69f;
+  border-color: #e1ede1;
+
 }
 
 .button-container {
@@ -84,6 +91,7 @@ a:hover {
 
 .button-container a {
   margin-right: 10px; /* Adjust the margin as needed to create spacing between buttons */
+  margin-left: 10px; /* Adjust the margin as needed to create spacing between buttons */
 }
 
 .heading {
