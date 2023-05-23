@@ -23,7 +23,9 @@ header {
   height: 100vh;
   text-align: center;
 }
-
+.intro-text {
+  margin-bottom: 20px; /* Adjust the margin as needed */
+}
 .styled-hr {
   width: 150px; /* Adjust the width as needed */
   margin: 0 auto; /* Center the <hr> horizontally */
@@ -39,6 +41,8 @@ header p {
   font-size: 30px;
 
 }
+
+
 /* Style main content */
 main {
   margin: 20px;
@@ -55,15 +59,22 @@ a:hover {
 }
 
 /* Style buttons */
-button {
-  background-color: #337ab7;
+.styled-button {
+  background-color: #4b5a4b;
   color: #fff;
-  border: none;
+  border: 1px solid #000;
   padding: 10px 20px;
+  border-radius: 0px;
+  font-size: 16px;
   cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  width: 300px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
 }
 
-button:hover {
+.styled-button:hover {
   background-color: #23527c;
 }
 
