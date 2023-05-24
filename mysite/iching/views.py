@@ -9,3 +9,6 @@ def index(request):
         'num_hexagrams': num_hexagrams,
     }
     return render(request, 'index.html', context=context)
+
+def toss_coins(request):
+    return render(request, 'toss_coins.html')
