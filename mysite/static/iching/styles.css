@@ -9,7 +9,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 /* Set font and background color */
 body {
   font-family: Bookman Old Style;;
-  background-color: #f0f0f0;
+  background-color: #e7e8e6;
 }
 
 /* Style header */
@@ -100,4 +100,21 @@ a:hover {
 
 .centered-element {
   display: inline-block;
+}
+.about-heading {
+  font-family: Herculanum; /* Replace with your desired font family */
+  margin-top: 20px;
+}
+
+.about-image {
+  width: 40%; /* Reduce the width by 30% */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+  object-position: center;
+  background-color: transparent;
+}
+
+.image-container {
+  display: inline-block;
+  overflow: hidden;
 }
