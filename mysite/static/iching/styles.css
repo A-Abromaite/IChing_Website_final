@@ -163,4 +163,12 @@ a:hover {
     text-align: center;
 }
 
-
+.coin-images {
+    height: 20%; /* Maintain aspect ratio */
+    width: auto; /* Change the width as needed */
+    object-fit: cover;
+    object-position: center;
+    background-color: transparent;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

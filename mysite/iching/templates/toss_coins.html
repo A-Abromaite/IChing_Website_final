@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{%block "title" %}Toss Coins{% endblock%}
+{% block "title" %}Toss Coins{% endblock %}
 
 {% block "content" %}
 
@@ -17,6 +17,15 @@
                 </form>
             </div>
         </div>
+        <div>
+            {% if toss_result %}
+                {% if toss_result == "Heads" %}
+                    <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
+                {% elif toss_result == "Tails" %}
+                    <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
-
-    {% endblock %}
+</div>
+{% endblock %}
