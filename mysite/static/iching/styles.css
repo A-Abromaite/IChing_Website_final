@@ -156,19 +156,20 @@ a:hover {
 
 .toss-content {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
-    text-align: center;
 }
 
 .coin-images {
-    height: 20%; /* Maintain aspect ratio */
-    width: auto; /* Change the width as needed */
+    max-height: 200px; /* Set the maximum height for the image */
+    max-width: 200px; /* Set the maximum width for the image */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
     object-fit: cover;
     object-position: center;
     background-color: transparent;
-    margin-top: 30px;
-    margin-bottom: 30px;
+}
+
+.coin-container {
+    margin-top: 20px;
 }

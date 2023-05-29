@@ -4,7 +4,6 @@
 {% block "title" %}Toss Coins{% endblock %}
 
 {% block "content" %}
-
 <div class="col-md-12 text-center">
     <div class="toss-container">
         <div class="toss-content">
@@ -16,14 +15,14 @@
                     <button type="submit" class="styled-button">Toss Coins</button>
                 </form>
             </div>
-        </div>
-        <div>
             {% if toss_result %}
-                {% if toss_result == "Heads" %}
-                    <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
-                {% elif toss_result == "Tails" %}
-                    <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
-                {% endif %}
+                <div class="coin-container">
+                    {% if toss_result == "Heads" %}
+                        <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
+                    {% elif toss_result == "Tails" %}
+                        <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
+                    {% endif %}
+                </div>
             {% endif %}
         </div>
     </div>
