@@ -7,11 +7,6 @@
 <div class="col-md-12 text-center">
     <div class="toss-container">
         <div class="toss-content">
-            <h1>
-            {% for result in toss_results %}
-                {{ result }}{% if not forloop.last %}&nbsp;&nbsp;{% endif %}
-            {% endfor %}
-            </h1>
             <div class="coin-container">
             {% for result in toss_results %}
                 {% if result == "Heads" %}
@@ -21,6 +16,12 @@
                 {% endif %}
             {% endfor %}
             </div>
+            <br>
+            <p>
+            {% for result in toss_results %}
+                {{ result }}{% if not forloop.last %}&nbsp;&nbsp;{% endif %}
+            {% endfor %}
+            </p>
             <br>
             <div class="button-container">
                 <form method="POST" action="{% url 'toss_coins' %}">
