@@ -17,9 +17,25 @@ def index(request):
 # def toss_coins(request):
 #     return render(request, 'toss_coins.html')
 
+def toss():
+    result = "Heads" if randint(0, 1) == 0 else "Tails"
+    return result
+
+def generate_results():
+    results = []
+    for i in range(3):
+        results.append(toss())
+    return results
+
+
 def toss_coins(request):
+    print("Inside toss_coins view")
     if request.method == "POST":
-        result = "Heads" if randint(0, 1) == 0 else "Tails"
+        results = generate_results()
     else:
-        result = ""
-    return render(request, "toss_coins.html", {"toss_result": result})
+        results = []
+
+    context = {
+        'toss_results': results,
+    }
+    return render(request, "toss_coins.html", context=context)
