@@ -84,7 +84,7 @@ a:hover {
 .styled-button:hover {
   background-color: #a2d69f;
   border-color: #e1ede1;
-
+  color: #e1ede1;
 }
 
 .button-container {
@@ -161,8 +161,8 @@ a:hover {
 }
 
 .coin-images {
-    max-height: 200px; /* Set the maximum height for the image */
-    max-width: 200px; /* Set the maximum width for the image */
+    max-height: 150px; /* Set the maximum height for the image */
+    max-width: 150px; /* Set the maximum width for the image */
     width: auto; /* Maintain aspect ratio */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover;
