@@ -5,12 +5,65 @@
 
 {% block "content"%}
 
-<h1>Oracle</h1>
-<p>Šiuo metu pas mus:</p>
-<ul>
-    <li><strong>Hexagrams:</strong>{{ num_hexagrams }}</li>
-    <li><strong>2: </strong></li>
-    <li><strong>3: </strong></li>
-</ul>
+<!-- Header -->
+<header class="header" id="header">
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="intro-text">
+                    <h1>I Ching</h1>
+                    <hr class="styled-hr">
+                    <p>The Book of Changes</p>
+                    <br>
+                    <div class="button-container">
+                        <a href="#about" class="styled-button">Learn More</a>
+                        <a href="{% url 'toss_coins' %}" class="styled-button">Toss Coins</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<div id="about">
+    <div class="container">
+        <div class="section-title text-center center">
+            <h2 class="about-heading">About I Ching</h2>
+            <hr class="styled-hr">
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="{% static 'img/about.png' %}" class="img-fluid about-image">
+            </div>
+            <div class="col-md-12 col-md-offset-2">
+                <div class="about-text text-center center">
+                    <p>The I Ching, also known as the Book of Changes, is an ancient Chinese text that has been revered
+                        for over two thousand years. It is a profound divination tool and philosophical guide that
+                        offers insights into the patterns and changes of life. Composed of 64 hexagrams, which are
+                        combinations of six solid or broken lines, the I Ching provides a framework for understanding
+                        the dynamic interplay between yin and yang, the fundamental forces of the universe.</p>
+                    <p>At its core, the I Ching is a system of wisdom and guidance, offering individuals a way to seek
+                        clarity and make informed decisions. The process of consulting the I Ching involves posing a
+                        question or reflecting on a situation and generating a hexagram through the manipulation of
+                        yarrow stalks or the tossing of coins. Each hexagram has its unique meaning, representing a
+                        specific state or transition in life. The text then provides interpretations and advice that can
+                        help individuals navigate challenges, embrace change, and find harmony in their actions.</p>
+                    <p>The I Ching's influence extends far beyond divination. It has permeated various aspects of
+                        Chinese culture, including philosophy, literature, and religion. Its teachings emphasize the
+                        importance of balance, adaptability, and the interconnectedness of all things. The I Ching has
+                        also captured the interest of Western scholars and thinkers, who have found resonance with its
+                        concepts in fields such as psychology and spirituality. Through its timeless wisdom, the I Ching
+                        continues to offer profound insights into the human experience and serves as a guide for
+                        personal growth and self-reflection.</p>
+                    <br>
+                    <div class="button-container">
+                        <a href="http://127.0.0.1:8000/iching/#" class="styled-button page-scroll">Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {%endblock%}

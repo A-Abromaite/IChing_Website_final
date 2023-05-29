@@ -144,5 +144,22 @@ a:hover {
   text-align: center;
 }
 
-.toss-image {
+.toss-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url("/static/img/toss.png");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
 }
+
+.toss-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+}
+
+
