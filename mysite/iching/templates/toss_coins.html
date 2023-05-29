@@ -8,10 +8,15 @@
 <div class="col-md-12 text-center">
     <div class="toss-container">
         <div class="toss-content">
-            <h1>Toss Coins</h1>
+            <h1>{{ toss_result }}</h1>
+            <br>
             <div class="button-container">
-                <a href="#" class="styled-button">Toss Coins</a>
+                <form method="POST" action="{% url 'toss_coins' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="styled-button">Toss Coins</button>
+                </form>
             </div>
         </div>
     </div>
+
     {% endblock %}

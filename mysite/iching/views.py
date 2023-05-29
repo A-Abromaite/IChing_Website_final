@@ -13,7 +13,13 @@ def index(request):
     }
     return render(request, 'index.html', context=context)
 
+#
+# def toss_coins(request):
+#     return render(request, 'toss_coins.html')
 
 def toss_coins(request):
-    return render(request, 'toss_coins.html')
-
+    if request.method == "POST":
+        result = "Heads" if randint(0, 1) == 0 else "Tails"
+    else:
+        result = ""
+    return render(request, "toss_coins.html", {"toss_result": result})

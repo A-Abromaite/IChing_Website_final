@@ -7,10 +7,9 @@ class Hexagram(models.Model):
     meaning = models.CharField(verbose_name="meaning", max_length=200)
 
 class CoinTossResult(models.Model):
-    TOSS_CHOICES = (
+    COIN_SIDES = (
         ('Heads', 'Heads'),
         ('Tails', 'Tails'),
     )
-    toss = models.CharField(max_length=5, choices=TOSS_CHOICES)
+    toss = models.CharField(verbose_name="toss", max_length=5, choices=COIN_SIDES)
     timestamp = models.DateTimeField(auto_now_add=True)
-
