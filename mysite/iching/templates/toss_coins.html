@@ -31,12 +31,12 @@
             </div>
         </div>
             <div>
-                <p>
+            <ul>  <!-- Use <ul> tag for unordered list -->
                 {% for casted_result in casted_results %}
-                {{ casted_result }}
+                <li>{{ casted_result }}</li>  <!-- Wrap each result in <li> tag -->
                 {% endfor %}
-                </p>
-            </div>
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
