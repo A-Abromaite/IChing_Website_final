@@ -8,6 +8,9 @@ from random import randint
 def index(request):
     return render(request, 'index.html')
 
+#
+# def toss_coins(request):
+#     return render(request, 'toss_coins.html')
 
 def toss():
     result = "Heads" if randint(0, 1) == 0 else "Tails"
@@ -19,28 +22,15 @@ def generate_results():
         results.append(toss())
     return results
 
-def cast_results(results):
-    if results in [["Heads", "Heads", "Tails"], ["Heads", "Tails", "Heads"], ["Tails", "Heads", "Heads"]]:
-        return "_____"
-    elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
-        return "__ __"
-    elif results == ["Heads", "Heads", "Heads"]:
-        return "__ __."
-    else:
-        return "_____."
-
 
 def toss_coins(request):
+    print("Inside toss_coins view")
     if request.method == "POST":
-        casted_results = request.session.get('casted_results', [])
         results = generate_results()
-        casted_results.append(cast_results(results))
-        request.session['casted_results'] = casted_results
     else:
-        request.session['casted_results'] = []
+        results = []
 
     context = {
-        'toss_results': generate_results(),
-        'casted_results': request.session['casted_results'],
+        'toss_results': results,
     }
     return render(request, "toss_coins.html", context=context)
