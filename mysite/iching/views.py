@@ -24,13 +24,13 @@ def generate_results():
 
 def cast_results(results):
     if results in [["Heads", "Heads", "Tails"], ["Heads", "Tails", "Heads"], ["Tails", "Heads", "Heads"]]:
-        return ("_____")
+        return ("HHT")
     elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
-        return ("__ __")
+        return ("TTH")
     elif results == ["Heads", "Heads", "Heads"]:
-        return ("_____.")
+        return ("HHH.")
     else:
-        return ("__ __.")
+        return ("TTT.")
 
 def toss_coins(request):
     if request.method == "POST":
