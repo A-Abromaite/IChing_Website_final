@@ -30,12 +30,24 @@
                 </form>
             </div>
         </div>
-            <div>
-            <ul>  <!-- Use <ul> tag for unordered list -->
+        <div>
+            <br>
+            <ul>
                 {% for casted_result in casted_results %}
-                <li>{{ casted_result }}</li>  <!-- Wrap each result in <li> tag -->
+                <li>
+                    {% if casted_result == "HHT" %}
+                    <img src="{% static 'img/stroke1.png' %}" alt="HHT" class="coin-images">
+                    {% elif casted_result == "TTH" %}
+                    <img src="{% static 'img/stroke2.png' %}" alt="TTH" class="coin-images">
+                    {% elif casted_result == "HHH" %}
+                    <img src="{% static 'img/stroke2_dot.png' %}" alt="HHH" class="coin-images">
+                    {% else %}
+                    <img src="{% static 'img/stroke1_dot.png' %}" alt="TTT" class="coin-images">
+                    {% endif %}
+                </li>
                 {% endfor %}
             </ul>
+
         </div>
     </div>
 </div>
