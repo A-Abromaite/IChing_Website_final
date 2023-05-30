@@ -8,19 +8,19 @@
     <div class="toss-container">
         <div class="toss-content">
             <div class="coin-container">
-            {% for result in toss_results %}
+                {% for result in toss_results %}
                 {% if result == "Heads" %}
-                    <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
+                <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
                 {% elif result == "Tails" %}
-                    <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
+                <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
                 {% endif %}
-            {% endfor %}
+                {% endfor %}
             </div>
             <br>
             <p>
-            {% for result in toss_results %}
+                {% for result in toss_results %}
                 {{ result }}{% if not forloop.last %}&nbsp;&nbsp;{% endif %}
-            {% endfor %}
+                {% endfor %}
             </p>
             <br>
             <div class="button-container">
@@ -29,10 +29,12 @@
                     <button type="submit" class="styled-button">Toss Coins</button>
                 </form>
             </div>
-            <div>
-                 <p>{{ casted_results }}</p>
-            </div>
         </div>
+            <div>
+                {% for casted_result in casted_results %}
+                <p>{{ casted_result }}</p>
+                {% endfor %}
+            </div>
     </div>
 </div>
 {% endblock %}

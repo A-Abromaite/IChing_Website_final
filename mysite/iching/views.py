@@ -6,16 +6,8 @@ from random import randint
 
 
 def index(request):
-    num_hexagrams = Hexagram.objects.all().count()
+    return render(request, 'index.html')
 
-    context = {
-        'num_hexagrams': num_hexagrams,
-    }
-    return render(request, 'index.html', context=context)
-
-#
-# def toss_coins(request):
-#     return render(request, 'toss_coins.html')
 
 def toss():
     result = "Heads" if randint(0, 1) == 0 else "Tails"
@@ -33,21 +25,22 @@ def cast_results(results):
     elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
         return "__ __"
     elif results == ["Heads", "Heads", "Heads"]:
-        return "_____."
-    else:
         return "__ __."
+    else:
+        return "_____."
 
 
 def toss_coins(request):
     if request.method == "POST":
+        casted_results = request.session.get('casted_results', [])
         results = generate_results()
+        casted_results.append(cast_results(results))
+        request.session['casted_results'] = casted_results
     else:
-        results = []
-
-    casted_results = cast_results(results)
+        request.session['casted_results'] = []
 
     context = {
-        'toss_results': results,
-        'casted_results': casted_results,
+        'toss_results': generate_results(),
+        'casted_results': request.session['casted_results'],
     }
     return render(request, "toss_coins.html", context=context)
