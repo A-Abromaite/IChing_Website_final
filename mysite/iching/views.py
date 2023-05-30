@@ -27,15 +27,27 @@ def generate_results():
         results.append(toss())
     return results
 
+def cast_results(results):
+    if results in [["Heads", "Heads", "Tails"], ["Heads", "Tails", "Heads"], ["Tails", "Heads", "Heads"]]:
+        return "_____"
+    elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
+        return "__ __"
+    elif results == ["Heads", "Heads", "Heads"]:
+        return "_____."
+    else:
+        return "__ __."
+
 
 def toss_coins(request):
-    print("Inside toss_coins view")
     if request.method == "POST":
         results = generate_results()
     else:
         results = []
 
+    casted_results = cast_results(results)
+
     context = {
         'toss_results': results,
+        'casted_results': casted_results,
     }
     return render(request, "toss_coins.html", context=context)
