@@ -11,11 +11,11 @@ class Coin(models.Model):
     def __str__(self):
         return f"{self.side}"
 class CoinTossCombination(models.Model):
-    coin1 = models.ForeignKey(to="Coin", verbose_name="coin1", related_name="combination_coin1", on_delete=models.SET_NULL, null=True)
-    coin2 = models.ForeignKey(to="Coin", verbose_name="coin2", related_name="combination_coin2", on_delete=models.SET_NULL, null=True)
-    coin3 = models.ForeignKey(to="Coin", verbose_name="coin3", related_name="combination_coin3",on_delete=models.SET_NULL, null=True)
+    coin1 = models.ForeignKey(to="Coin", verbose_name="Coin1", related_name="combination_coin1", on_delete=models.SET_NULL, null=True)
+    coin2 = models.ForeignKey(to="Coin", verbose_name="Coin2", related_name="combination_coin2", on_delete=models.SET_NULL, null=True)
+    coin3 = models.ForeignKey(to="Coin", verbose_name="Coin3", related_name="combination_coin3",on_delete=models.SET_NULL, null=True)
     name = models.CharField(verbose_name="combination", max_length=3, default="")
-    casted_result = models.ForeignKey(to="CastedResult", verbose_name="casted_result", on_delete=models.SET_NULL, null=True)
+    casted_result = models.ForeignKey(to="CastedResult", verbose_name="Casted result", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -28,7 +28,7 @@ class CastedResult(models.Model):
         ("TTT", "TTT"),
     ]
 
-    name = models.CharField(verbose_name="casted_result", max_length=3, choices=CASTED_RESULT, null=True)
+    name = models.CharField(verbose_name="Casted Result", max_length=3, choices=CASTED_RESULT, null=True)
 
     def __str__(self):
         return f"{self.name}"
