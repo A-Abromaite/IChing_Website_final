@@ -173,3 +173,17 @@ a:hover {
 .coin-container {
     margin-top: 20px;
 }
+
+.gap-row {
+    height: 20px; /* Adjust the height to create the desired gap */
+    list-style: none; /* Remove any bullet or numbering style */
+}
+.brush-images {
+    max-height: 200px;
+    max-width: 200px; /* Set the maximum width for the image */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    object-position: center;
+    background-color: transparent;
+}
