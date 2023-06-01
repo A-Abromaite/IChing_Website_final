@@ -46,8 +46,12 @@
                 </li>
                 {% endfor %}
             </ul>
-
         </div>
+        {% if hexagram_number %}
+        <div>
+            <h2>Hexagram Number: {{ hexagram_number }}</h2>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
