@@ -43,19 +43,28 @@ def toss_coins(request):
             request.session['casted_results'] = session_results[:6]  # Limit to 6 rows
             button_clicks += 1
             request.session['button_clicks'] = button_clicks
+
+            if button_clicks == 6:
+                # Retrieve hexagram number from the database based on the casted results
+                hexagram_number = "Hexagram Number"
+                request.session['hexagram_number'] = hexagram_number
+
         else:
-            # Handle the case when button clicks exceed 6 todo
             results = []
             casted_results = []
+            hexagram_number = request.session.get('hexagram_number')
     else:
         results = []
         casted_results = []
         request.session['casted_results'] = []
         request.session['button_clicks'] = 0
+        request.session['hexagram_number'] = None
 
     context = {
         'toss_results': results,
-        'casted_results': request.session['casted_results']
+        'casted_results': request.session['casted_results'],
+        'hexagram_number': request.session['hexagram_number']
     }
     return render(request, "toss_coins.html", context=context)
+
 
