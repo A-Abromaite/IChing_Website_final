@@ -26,7 +26,11 @@
             <div class="button-container">
                 <form method="POST" action="{% url 'toss_coins' %}">
                     {% csrf_token %}
+                    {% if new_toss %}
+                    <button type="submit" class="styled-button">New Toss</button>
+                    {% else %}
                     <button type="submit" class="styled-button">Toss Coins</button>
+                    {% endif %}
                 </form>
             </div>
         </div>
