@@ -33,8 +33,11 @@ def cast_results(results):
         return ("TTT.")
 
 def toss_coins(request):
+    new_toss = False
+
     if request.method == "POST":
         button_clicks = request.session.get('button_clicks', 0)
+
         if button_clicks < 6:
             results = generate_results()
             casted_results = cast_results(results)
@@ -48,11 +51,17 @@ def toss_coins(request):
                 # Retrieve hexagram number from the database based on the casted results
                 hexagram_number = "Hexagram Number"
                 request.session['hexagram_number'] = hexagram_number
+                new_toss = True
 
         else:
             results = []
             casted_results = []
             hexagram_number = request.session.get('hexagram_number')
+            # Reset values to start over
+            request.session['button_clicks'] = 0
+            request.session['casted_results'] = []
+            request.session['hexagram_number'] = None
+
     else:
         results = []
         casted_results = []
@@ -63,8 +72,10 @@ def toss_coins(request):
     context = {
         'toss_results': results,
         'casted_results': request.session['casted_results'],
-        'hexagram_number': request.session['hexagram_number']
+        'hexagram_number': request.session['hexagram_number'],
+        'new_toss': new_toss,
     }
     return render(request, "toss_coins.html", context=context)
+
 
 
