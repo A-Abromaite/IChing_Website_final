@@ -9,20 +9,17 @@
         <div class="toss-content">
             <div class="coin-container">
                 {% for result in toss_results %}
-                {% if result == "Heads" %}
-                <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
-                {% elif result == "Tails" %}
-                <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
-                {% endif %}
+                <div class="coin-result">
+                    {% if result == "Heads" %}
+                    <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
+                    <p class="coin-label">Heads</p>
+                    {% elif result == "Tails" %}
+                    <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
+                    <p class="coin-label">Tails</p>
+                    {% endif %}
+                </div>
                 {% endfor %}
             </div>
-            <br>
-            <p>
-                {% for result in toss_results %}
-                {{ result }}{% if not forloop.last %}&nbsp;&nbsp;{% endif %}
-                {% endfor %}
-            </p>
-            <br>
             <div class="button-container">
                 <form method="POST" action="{% url 'toss_coins' %}">
                     {% csrf_token %}
