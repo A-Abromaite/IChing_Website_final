@@ -4,55 +4,133 @@
 {% block "title" %}Toss Coins{% endblock %}
 
 {% block "content" %}
-<div class="col-md-12 text-center">
+
+<div class="container">
     <div class="toss-container">
-        <div class="toss-content">
-            <div class="coin-container">
-                {% for result in toss_results %}
-                <div class="coin-label">
-                    {% if result == "Heads" %}
-                    <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
-                    <p class="coin-result">Heads</p>
-                    {% elif result == "Tails" %}
-                    <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
-                    <p class="coin-result">Tails</p>
-                    {% endif %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+            <div class="toss-content">
+                <div class="coin-container">
+                    {% for result in toss_results %}
+                    <div class="coin-label">
+                        {% if result == "Heads" %}
+                        <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
+                        <p class="coin-result">Heads</p>
+                        {% elif result == "Tails" %}
+                        <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
+                        <p class="coin-result">Tails</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
+                </div>
+                <div class="toss-button-container">
             <div class="button-container">
-                <form method="POST" action="{% url 'toss_coins' %}">
-                    {% csrf_token %}
-                    {% if new_toss %}
-                    <button type="submit" class="styled-button">New Toss</button>
-                    {% else %}
-                    <button type="submit" class="styled-button">Toss Coins</button>
-                    {% endif %}
-                </form>
+                    <form method="POST" action="{% url 'toss_coins' %}">
+                        {% csrf_token %}
+                        {% if new_toss %}
+                        <button type="submit" class="styled-button">New Toss</button>
+                        {% else %}
+                        <button type="submit" class="styled-button">Toss Coins</button>
+                        {% endif %}
+                    </form>
+                </div>
+                </div>
+                <div class="toss-paragraphs">
+                <p>Formulate a question to receive guidance on.</p>
+                    <br>
+                <p>Avoid yes or no questions.</p>
             </div>
-        </div>
+            </div>
+            </div>
+        <div class="col-md-6">
+            <div class="box">
         <div class="brush-line-container">
-            <ul>
-                {% for casted_result in casted_results %}
-                <li>
-                    {% if casted_result == "HHT" %}
-                    <img src="{% static 'img/stroke1.png' %}" alt="HHT" class="brush-images">
-                    {% elif casted_result == "TTH" %}
-                    <img src="{% static 'img/stroke2.png' %}" alt="TTH" class="brush-images">
-                    {% elif casted_result == "HHH." %}
-                    <img src="{% static 'img/stroke2_dot.png' %}" alt="HHH" class="brush-images">
-                    {% else %}
-                    <img src="{% static 'img/stroke1_dot.png' %}" alt="TTT" class="brush-images">
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
+                <ul>
+                    {% for casted_result in casted_results %}
+                    <li>
+                        {% if casted_result == "HHT" %}
+                        <img src="{% static 'img/stroke1.png' %}" alt="HHT" class="brush-images">
+                        {% elif casted_result == "TTH" %}
+                        <img src="{% static 'img/stroke2.png' %}" alt="TTH" class="brush-images">
+                        {% elif casted_result == "HHH." %}
+                        <img src="{% static 'img/stroke2_dot.png' %}" alt="HHH" class="brush-images">
+                        {% else %}
+                        <img src="{% static 'img/stroke1_dot.png' %}" alt="TTT" class="brush-images">
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if hexagram_number %}
+            <div>
+                <h2>Hexagram Number: {{ hexagram_number }}</h2>
+            </div>
+            {% endif %}
         </div>
-        {% if hexagram_number %}
-        <div>
-            <h2>Hexagram Number: {{ hexagram_number }}</h2>
         </div>
-        {% endif %}
-    </div>
+        </div>
 </div>
-{% endblock %}
+
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col">-->
+
+<!--        <div class="toss-container">-->
+<!--            <div class="toss-content">-->
+<!--                <div class="coin-container">-->
+<!--                    {% for result in toss_results %}-->
+<!--                    <div class="coin-label">-->
+<!--                        {% if result == "Heads" %}-->
+<!--                        <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">-->
+<!--                        <p class="coin-result">Heads</p>-->
+<!--                        {% elif result == "Tails" %}-->
+<!--                        <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">-->
+<!--                        <p class="coin-result">Tails</p>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--                <div class="button-container">-->
+<!--                    <form method="POST" action="{% url 'toss_coins' %}">-->
+<!--                        {% csrf_token %}-->
+<!--                        {% if new_toss %}-->
+<!--                        <button type="submit" class="styled-button">New Toss</button>-->
+<!--                        {% else %}-->
+<!--                        <button type="submit" class="styled-button">Toss Coins</button>-->
+<!--                        {% endif %}-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--                <div class="col">-->
+<!--            <div class="brush-line-container">-->
+<!--                <ul>-->
+<!--                    {% for casted_result in casted_results %}-->
+<!--                    <li>-->
+<!--                        {% if casted_result == "HHT" %}-->
+<!--                        <img src="{% static 'img/stroke1.png' %}" alt="HHT" class="brush-images">-->
+<!--                        {% elif casted_result == "TTH" %}-->
+<!--                        <img src="{% static 'img/stroke2.png' %}" alt="TTH" class="brush-images">-->
+<!--                        {% elif casted_result == "HHH." %}-->
+<!--                        <img src="{% static 'img/stroke2_dot.png' %}" alt="HHH" class="brush-images">-->
+<!--                        {% else %}-->
+<!--                        <img src="{% static 'img/stroke1_dot.png' %}" alt="TTT" class="brush-images">-->
+<!--                        {% endif %}-->
+<!--                    </li>-->
+<!--                    {% endfor %}-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            {% if hexagram_number %}-->
+<!--            <div>-->
+<!--                <h2>Hexagram Number: {{ hexagram_number }}</h2>-->
+<!--            </div>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+    {% endblock %}

@@ -4,6 +4,8 @@
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
   margin: 0;
   padding: 0;
+  list-style-type: none;
+
 }
 
 /* Set font and background color */
@@ -149,7 +151,7 @@ a:hover {
     height: 100vh;
     background-image: url("/static/img/toss.png");
     background-size: auto 100%;
-    background-position: right;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -171,16 +173,16 @@ a:hover {
 }
 
 .coin-container {
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .gap-row {
     height: 20px; /* Adjust the height to create the desired gap */
-    list-style: none; /* Remove any bullet or numbering style */
+
 }
 .brush-images {
-    max-height: 200px;
-    max-width: 200px; /* Set the maximum width for the image */
+    max-height: 230px;
+    max-width: 230px; /* Set the maximum width for the image */
     width: auto; /* Maintain aspect ratio */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover;
@@ -225,7 +227,7 @@ a:hover {
 }
 
 .brush-line-container {
-    margin-top: 30px;
+    margin-top: 65px;
 }
 
 .coin-result {
@@ -240,6 +242,29 @@ a:hover {
     margin-bottom: 40px;
 }
 
+.box{
+    width:500px;
+    height:650px;
+    border:5px solid black;
+    margin: 40px auto;
+    text-align: center;
+    position: relative;
 
 
+}
 
+.toss-button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+.toss-paragraphs {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Baskerville, serif;
+    font-size: 20px;
+    }
