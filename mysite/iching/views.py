@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Hexagram
+from .models import Hexagram, CastedResult
 from random import randint
+
 
 
 
@@ -24,13 +25,17 @@ def generate_results():
 
 def cast_results(results):
     if results in [["Heads", "Heads", "Tails"], ["Heads", "Tails", "Heads"], ["Tails", "Heads", "Heads"]]:
-        return ("HHT")
+        hht_result = CastedResult.objects.get(name="HHT")
+        return {"name": hht_result.name}
     elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
-        return ("TTH")
+        hht_result = CastedResult.objects.get(name="TTH")
+        return {"name": hht_result.name}
     elif results == ["Heads", "Heads", "Heads"]:
-        return ("HHH")
+        hht_result = CastedResult.objects.get(name="HHH")
+        return {"name": hht_result.name}
     else:
-        return ("TTT")
+        hht_result = CastedResult.objects.get(name="TTT")
+        return {"name": hht_result.name}
 
 def toss_coins(request):
     new_toss = False
