@@ -37,15 +37,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="toss-paragraphs">
-                        <p>Formulate a question to receive guidance on.</p>
-                        <br>
-                        <p>Avoid yes or no questions.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box">
+                    <br>
                     <div class="brush-line-container">
                         <ul>
                             {% for casted_result in casted_results %}
@@ -63,6 +55,11 @@
                             {% endfor %}
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h1>Your answer will appear here</h1>
                     {% if hexagram_number %}
                     <div>
                         <h2>Hexagram Number: {{ hexagram_number }}</h2>
