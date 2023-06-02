@@ -28,9 +28,9 @@ def cast_results(results):
     elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
         return ("TTH")
     elif results == ["Heads", "Heads", "Heads"]:
-        return ("HHH.")
+        return ("HHH")
     else:
-        return ("TTT.")
+        return ("TTT")
 
 def toss_coins(request):
     new_toss = False

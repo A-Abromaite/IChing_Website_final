@@ -8,7 +8,7 @@ class CoinTossCombinationAdmin(admin.ModelAdmin):
     list_display = ["name", "casted_result"]
 
 class CastedResultAdmin(admin.ModelAdmin):
-    list_display = ["name"]
+    list_display = ["name", "line"]
 
 class LineAdmin(admin.ModelAdmin):
     list_display = ["line"]
