@@ -7,9 +7,11 @@ from random import randint
 def index(request):
     return render(request, 'index.html')
 
+Heads = Coin.objects.get(side="Heads")
+Tails = Coin.objects.get(side="Tails")
 
 def toss():
-    result = Coin.objects.get(side="Heads") if randint(0, 1) == 0 else Coin.objects.get(side="Tails")
+    result = Heads if randint(0, 1) == 0 else Tails
     return result
 
 def generate_results():
@@ -20,21 +22,21 @@ def generate_results():
 
 
 def cast_results(results):
-    if results in   [[CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Heads").id, CoinTossCombination.objects.get(coin3="Tails").id],
-                    [CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Tails").id, CoinTossCombination.objects.get(coin3="Heads").id],
-                    [CoinTossCombination.objects.get(coin1="Tails").id, CoinTossCombination.objects.get(coin2="Heads"), CoinTossCombination.objects.get(coin3="Heads").id]]:
-        hht_result = CastedResult.objects.get(name="HHT")
+    if results in   [[CoinTossCombination.objects.get(coin1=Heads), CoinTossCombination.objects.get(coin2=Heads), CoinTossCombination.objects.get(coin3=Tails)],
+                    [CoinTossCombination.objects.get(coin1=Heads), CoinTossCombination.objects.get(coin2=Tails), CoinTossCombination.objects.get(coin3=Heads)],
+                    [CoinTossCombination.objects.get(coin1=Tails), CoinTossCombination.objects.get(coin2=Heads), CoinTossCombination.objects.get(coin3=Heads)]]:
+        hht_result = CoinTossCombination.objects.get(casted_result="HHT")
         return {"name": hht_result.name}
-    elif results in [[CoinTossCombination.objects.get(coin1="Tails").id, CoinTossCombination.objects.get(coin2="Tails").id, CoinTossCombination.objects.get(coin3="Heads").id],
-                     [CoinTossCombination.objects.get(coin1="Tails").id, CoinTossCombination.objects.get(coin2="Heads").id, CoinTossCombination.objects.get(coin3="Tails").id],
-                     [CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Tails").id, CoinTossCombination.objects.get(coin3="Tails").id]]:
-        hht_result = CastedResult.objects.get(name="TTH")
+    elif results in [[CoinTossCombination.objects.get(coin1=Tails), CoinTossCombination.objects.get(coin2=Tails), CoinTossCombination.objects.get(coin3=Heads)],
+                     [CoinTossCombination.objects.get(coin1=Tails), CoinTossCombination.objects.get(coin2=Heads), CoinTossCombination.objects.get(coin3=Tails)],
+                     [CoinTossCombination.objects.get(coin1=Heads), CoinTossCombination.objects.get(coin2=Tails), CoinTossCombination.objects.get(coin3=Tails)]]:
+        hht_result = CoinTossCombination.objects.get(casted_result="TTH")
         return {"name": hht_result.name}
-    elif results == [CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Heads").id, CoinTossCombination.objects.get(coin3="Heads").id]:
-        hht_result = CastedResult.objects.get(name="HHH")
+    elif results == [CoinTossCombination.objects.get(coin1=Heads), CoinTossCombination.objects.get(coin2=Heads), CoinTossCombination.objects.get(coin3=Heads)]:
+        hht_result = CoinTossCombination.objects.get(casted_result="HHH")
         return {"name": hht_result.name}
     else:
-        hht_result = CastedResult.objects.get(name="TTT")
+        hht_result = CoinTossCombination.objects.get(casted_result="TTT")
         return {"name": hht_result.name}
 
 def toss_coins(request):
