@@ -9,13 +9,13 @@
         <div class="toss-content">
             <div class="coin-container">
                 {% for result in toss_results %}
-                <div class="coin-result">
+                <div class="coin-label">
                     {% if result == "Heads" %}
                     <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
-                    <p class="coin-label">Heads</p>
+                    <p class="coin-result">Heads</p>
                     {% elif result == "Tails" %}
                     <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
-                    <p class="coin-label">Tails</p>
+                    <p class="coin-result">Tails</p>
                     {% endif %}
                 </div>
                 {% endfor %}

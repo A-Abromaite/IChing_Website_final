@@ -229,15 +229,15 @@ a:hover {
 }
 
 .coin-result {
-    display: inline-block;
+    margin-top: 5px;
     font-family: Baskerville, serif;
-    text-align: center;
-    margin-bottom: 40px;
+    font-size: 18px;
 }
 
 .coin-label {
-    margin-top: 5px;
-    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 
