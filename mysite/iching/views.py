@@ -9,9 +9,6 @@ from random import randint
 def index(request):
     return render(request, 'index.html')
 
-#
-# def toss_coins(request):
-#     return render(request, 'toss_coins.html')
 
 def toss():
     result = "Heads" if randint(0, 1) == 0 else "Tails"
@@ -23,6 +20,7 @@ def generate_results():
         results.append(toss())
     return results
 
+# updated
 def cast_results(results):
     if results in [["Heads", "Heads", "Tails"], ["Heads", "Tails", "Heads"], ["Tails", "Heads", "Heads"]]:
         hht_result = CastedResult.objects.get(name="HHT")
