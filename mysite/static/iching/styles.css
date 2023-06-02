@@ -8,6 +8,12 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 
 }
 
+.content-wrapper {
+  min-height: 100%;
+  /* Adjust padding/margin as needed */
+  padding-bottom: 60px; /* Height of the footer */
+}
+
 /* Set font and background color */
 body {
   font-family: Baskerville, serif;
@@ -137,13 +143,13 @@ a:hover {
 
 .custom-footer {
   background-color: #737573;
+  color: white;
   height: 50px;
   font-family: Baskerville, serif;
   font-size: 16px;
   display: flex;
   align-items: center; /* Align the content vertically in the center */
   justify-content: center; /* Align the content horizontally in the center */
-  text-align: center;
 }
 
 .toss-container {
