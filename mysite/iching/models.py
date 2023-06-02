@@ -10,6 +10,7 @@ class Coin(models.Model):
 
     def __str__(self):
         return f"{self.side}"
+
 class CoinTossCombination(models.Model):
     coin1 = models.ForeignKey(to="Coin", verbose_name="Coin1", related_name="combination_coin1", on_delete=models.SET_NULL, null=True)
     coin2 = models.ForeignKey(to="Coin", verbose_name="Coin2", related_name="combination_coin2", on_delete=models.SET_NULL, null=True)

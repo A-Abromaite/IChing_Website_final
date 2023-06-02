@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Hexagram, CastedResult
+from .models import Hexagram, CastedResult, Coin, CoinTossCombination
 from random import randint
-
-
 
 
 def index(request):
@@ -11,7 +9,7 @@ def index(request):
 
 
 def toss():
-    result = "Heads" if randint(0, 1) == 0 else "Tails"
+    result = Coin.objects.get(side="Heads") if randint(0, 1) == 0 else Coin.objects.get(side="Tails")
     return result
 
 def generate_results():
@@ -20,15 +18,19 @@ def generate_results():
         results.append(toss())
     return results
 
-# updated
+
 def cast_results(results):
-    if results in [["Heads", "Heads", "Tails"], ["Heads", "Tails", "Heads"], ["Tails", "Heads", "Heads"]]:
+    if results in   [[CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Heads").id, CoinTossCombination.objects.get(coin3="Tails").id],
+                    [CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Tails").id, CoinTossCombination.objects.get(coin3="Heads").id],
+                    [CoinTossCombination.objects.get(coin1="Tails").id, CoinTossCombination.objects.get(coin2="Heads"), CoinTossCombination.objects.get(coin3="Heads").id]]:
         hht_result = CastedResult.objects.get(name="HHT")
         return {"name": hht_result.name}
-    elif results in [["Tails", "Tails", "Heads"], ["Tails", "Heads", "Tails"], ["Heads", "Tails", "Tails"]]:
+    elif results in [[CoinTossCombination.objects.get(coin1="Tails").id, CoinTossCombination.objects.get(coin2="Tails").id, CoinTossCombination.objects.get(coin3="Heads").id],
+                     [CoinTossCombination.objects.get(coin1="Tails").id, CoinTossCombination.objects.get(coin2="Heads").id, CoinTossCombination.objects.get(coin3="Tails").id],
+                     [CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Tails").id, CoinTossCombination.objects.get(coin3="Tails").id]]:
         hht_result = CastedResult.objects.get(name="TTH")
         return {"name": hht_result.name}
-    elif results == ["Heads", "Heads", "Heads"]:
+    elif results == [CoinTossCombination.objects.get(coin1="Heads").id, CoinTossCombination.objects.get(coin2="Heads").id, CoinTossCombination.objects.get(coin3="Heads").id]:
         hht_result = CastedResult.objects.get(name="HHH")
         return {"name": hht_result.name}
     else:
