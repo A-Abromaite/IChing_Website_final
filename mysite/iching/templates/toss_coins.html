@@ -14,10 +14,10 @@
                         <div class="coin-container">
                             {% for result in toss_results %}
                             <div class="coin-label">
-                                {% if result == "Heads" %}
+                                {% if result.side == "Heads" %}
                                 <img src="{% static 'img/coin_obverse.png' %}" alt="Heads" class="coin-images">
                                 <p class="coin-result">Heads</p>
-                                {% elif result == "Tails" %}
+                                {% elif result.side == "Tails" %}
                                 <img src="{% static 'img/coin_reverse.png' %}" alt="Tails" class="coin-images">
                                 <p class="coin-result">Tails</p>
                                 {% endif %}
