@@ -4,18 +4,20 @@ from .models import Hexagram, CastedResult, Coin, CoinTossCombination
 from random import randint
 
 
+
 def index(request):
     return render(request, 'index.html')
 
 Heads = Coin.objects.get(side="Heads")
 Tails = Coin.objects.get(side="Tails")
+results = []
 
 def toss():
     result = Heads if randint(0, 1) == 0 else Tails
     return result
 
 def generate_results():
-    results = []
+    results.clear()
     for i in range(3):
         results.append(toss())
     return results
