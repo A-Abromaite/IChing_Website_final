@@ -10,14 +10,14 @@ def index(request):
 
 Heads = Coin.objects.get(side="Heads")
 Tails = Coin.objects.get(side="Tails")
-results = []
+
 
 def toss():
     result = Heads if randint(0, 1) == 0 else Tails
     return result
 
 def generate_results():
-    results.clear()
+    results = []
     for i in range(3):
         results.append(toss())
     return results
@@ -35,32 +35,6 @@ def cast_results(results):
     else:
         casted_result = CastedResult.objects.get(name="TTT")
         return {"name": casted_result.name}
-
-
-    # global results
-    # if results in   [CoinTossCombination.objects.get(name="HHT"),
-    #                  CoinTossCombination.objects.get(name="HTH"),
-    #                  CoinTossCombination.objects.get(name="THH")]:
-    #
-    #      hht_result =  CastedResult.objects.get(name="HHT")
-    #      return {"name": hht_result.name}
-    #
-    # elif results in [CoinTossCombination.objects.get(name="TTH"),
-    #                  CoinTossCombination.objects.get(name="THT"),
-    #                  CoinTossCombination.objects.get(name="HTT")]:
-    #
-    #     hht_result = CastedResult.objects.get(name="TTH")
-    #     return {"name": hht_result.name}
-    #
-    # elif results == CoinTossCombination.objects.get(name="HHH"):
-    #
-    #     hht_result = CastedResult.objects.get(name="HHH")
-    #     return {"name": hht_result.name}
-    #
-    # else:
-    #
-    #     hht_result = CastedResult.objects.get(name="TTT")
-    #     return {"name": hht_result.name}
 
 
 def toss_coins(request):
