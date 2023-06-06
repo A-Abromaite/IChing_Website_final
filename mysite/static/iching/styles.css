@@ -268,7 +268,7 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+
 }
 
 .toss-button-container {
@@ -287,6 +287,32 @@ a:hover {
     font-size: 20px;
     }
 
-.hexagram-paragraphs {
+.hexagram-meaning {
     font-size: 20px;
+    margin-top: 30px;
+    margin-bottom:30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
     }
+
+.situation {
+    font-size: 20px;
+    margin-bottom:30px;
+    color: #690d22;
+    text-align:center;
+    }
+
+.hexagram-description {
+    font-size: 20px;
+    margin-top: 10px;
+    text-align:center;
+    }
+
+.hexagram-h2 {
+text-align: center
+}
+
+.your-guidance {
+text-align: center
+}

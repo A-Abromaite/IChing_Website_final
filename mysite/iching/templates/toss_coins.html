@@ -60,26 +60,26 @@
             <div class="col-md-6">
                 <div class="box2">
                     {% if not new_toss %}
-                    <h1>Your guidance will appear here</h1>
+                    <h1 class="your-guidance">Your guidance will appear here</h1>
                     {% endif %}
                     <br>
                     {% if hexagram_number %}
-                    <div>
-                        <h2>{{ hexagram_number.number }}</h2>
-                        <p>{{ hexagram_number.description }}</p>
-                        <p>{{ hexagram_number.meaning }}</p>
+                    <div class="hexagram-paragraphs">
+                        <h2 class="hexagram-h2">{{ hexagram_number.number }}</h2>
+                        <p class="hexagram-description">{{ hexagram_number.description }}</p>
+                        <p class="hexagram-meaning">{{ hexagram_number.meaning }}</p>
                     </div>
                     {% endif %}
-                    <br>
+
                     {% if modified_hexagram_number %}
                     <div>
-                        <p>Your situation will soon change</p>
+                        <p class="situation">Your situation will soon change</p>
                     </div>
-                    <br>
+
                     <div>
-                        <h2>{{ modified_hexagram_number.number }}</h2>
-                        <p>{{ modified_hexagram_number.description }}</p>
-                        <p>{{ modified_hexagram_number.meaning }}</p>
+                        <h2 class="hexagram-h2">{{ modified_hexagram_number.number }}</h2>
+                        <p class="hexagram-description">{{ modified_hexagram_number.description }}</p>
+                        <p class="hexagram-meaning">{{ modified_hexagram_number.meaning }}</p>
                     </div>
                     {% endif %}
                 </div>
