@@ -9,7 +9,7 @@
     <div class="toss-container">
         <div class="row">
             <div class="col-md-6">
-                <div class="box">
+                <div class="box1">
                     <div class="toss-content">
                         <div class="coin-container">
                             {% for result in toss_results %}
@@ -58,15 +58,25 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="box">
-                    <h1>Your answer will appear here</h1>
+                <div class="box2">
+                    {% if not new_toss %}
+                    <h1>Your guidance will appear here</h1>
+                    {% endif %}
                     <br>
                     {% if hexagram_number %}
                     <div>
                         <h2>{{ hexagram_number.number }}</h2>
                         <p>{{ hexagram_number.description }}</p>
                         <p>{{ hexagram_number.meaning }}</p>
-                        <br>
+                    </div>
+                    {% endif %}
+                    <br>
+                    {% if modified_hexagram_number %}
+                    <div>
+                        <p>Your situation will soon change</p>
+                    </div>
+                    <br>
+                    <div>
                         <h2>{{ modified_hexagram_number.number }}</h2>
                         <p>{{ modified_hexagram_number.description }}</p>
                         <p>{{ modified_hexagram_number.meaning }}</p>

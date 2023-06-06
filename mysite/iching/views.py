@@ -101,15 +101,6 @@ def toss_coins(request):
                     )
                     print(modified_hexagram_number)
 
-                else:
-                    results = []
-                    casted_results = []
-                    # hexagram_number = request.session.get('hexagram_number')
-                    # Reset values to start over
-                    request.session['button_clicks'] = 0
-                    request.session['casted_results'] = []
-                    request.session['hexagram_number'] = None
-
         else:
             results = []
             casted_results = []

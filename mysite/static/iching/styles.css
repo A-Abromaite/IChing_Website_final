@@ -249,7 +249,7 @@ a:hover {
     margin-bottom: 40px;
 }
 
-.box{
+.box1{
     width:500px;
     height:650px;
     border:5px solid black;
@@ -257,7 +257,18 @@ a:hover {
     text-align: center;
     position: relative;
 
+}
 
+.box2{
+    width:500px;
+    height:650px;
+    border:5px solid black;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .toss-button-container {
@@ -273,5 +284,9 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Baskerville, serif;
+    font-size: 20px;
+    }
+
+.hexagram-paragraphs {
     font-size: 20px;
     }
