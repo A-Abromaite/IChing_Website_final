@@ -67,7 +67,7 @@ def toss_coins(request):
             results = generate_results()
             casted_results = cast_results(results)
             session_results = request.session.get('casted_results', [])
-            session_results.insert(0, casted_results)
+            session_results.append(casted_results)
             request.session['casted_results'] = session_results[:6]  # Limit to 6 rows
             button_clicks += 1
             request.session['button_clicks'] = button_clicks

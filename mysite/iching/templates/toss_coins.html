@@ -40,7 +40,7 @@
                     <br>
                     <div class="brush-line-container">
                         <ul>
-                            {% for casted_result in casted_results %}
+                            {% for casted_result in casted_results reversed %}
                             <li>
                                 {% if casted_result.name == "HHT" %}
                                 <img src="{% static 'img/stroke1.png' %}" alt="HHT" class="brush-images">
