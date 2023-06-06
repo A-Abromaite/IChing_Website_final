@@ -4,24 +4,29 @@ from .models import Hexagram, CastedResult, Coin, CoinTossCombination
 from random import randint
 
 
-
 def index(request):
     return render(request, 'index.html')
+
 
 Heads = Coin.objects.get(side="Heads")
 Tails = Coin.objects.get(side="Tails")
 
 
+# toss of 1 coin
 def toss():
     result = Heads if randint(0, 1) == 0 else Tails
     return result
 
+
+# tossing 3 coins
 def generate_results():
     results = []
     for i in range(3):
         results.append(toss())
     return results
 
+
+# assigning result to toss_combination
 def cast_results(results):
     if results in [[Heads, Heads, Tails], [Heads, Tails, Heads], [Tails, Heads, Heads]]:
         casted_result = CastedResult.objects.get(name="HHT")
@@ -37,9 +42,23 @@ def cast_results(results):
         return {"name": casted_result.name, "line": casted_result.line.line}
 
 
+# assigning opposite value in case of HHH or TTT
+def change(casted_result):
+    if casted_result["name"] == "HHH":
+        casted_result = CastedResult.objects.get(name="TTT")
+        return {"name": casted_result.name, "line": casted_result.line.line}
+    elif casted_result["name"] == "TTT":
+        casted_result = CastedResult.objects.get(name="HHH")
+        return {"name": casted_result.name, "line": casted_result.line.line}
+    else:
+        return casted_result
+
+
 def toss_coins(request):
     new_toss = False
+    situation_change = False
     hexagram_number = ""
+    modified_hexagram_number = ""
 
     if request.method == "POST":
         button_clicks = request.session.get('button_clicks', 0)
@@ -55,28 +74,47 @@ def toss_coins(request):
             print(session_results)
 
             if button_clicks == 6:
-                # Retrieve hexagram number from the database based on the casted results
-                # session_results = request.session.get('casted_results', [])
-                # hexagram_number = "Hexagram"
-                hexagram_number = Hexagram.objects.filter(
-                line1__line=session_results[0]["line"],
-                line2__line=session_results[1]["line"],
-                line3__line=session_results[2]["line"],
-                line4__line=session_results[3]["line"],
-                line5__line=session_results[4]["line"],
-                line6__line=session_results[5]["line"],
-                ).first()
-                # request.session['hexagram_number'] = hexagram_number
+                hexagram_number = Hexagram.objects.get(
+                    line1__line=session_results[0]["line"],
+                    line2__line=session_results[1]["line"],
+                    line3__line=session_results[2]["line"],
+                    line4__line=session_results[3]["line"],
+                    line5__line=session_results[4]["line"],
+                    line6__line=session_results[5]["line"],
+                )
                 print(session_results)
                 new_toss = True
+
+                if any(result["name"] in ["HHH", "TTT"] for result in session_results):
+                    situation_change = True
+                    modified_results = []
+                    for result in session_results:
+                        modified_result = change(result)
+                        modified_results.append(modified_result)
+                    modified_hexagram_number = Hexagram.objects.get(
+                        line1__line=modified_results[0]["line"],
+                        line2__line=modified_results[1]["line"],
+                        line3__line=modified_results[2]["line"],
+                        line4__line=modified_results[3]["line"],
+                        line5__line=modified_results[4]["line"],
+                        line6__line=modified_results[5]["line"],
+                    )
+                    print(modified_hexagram_number)
+
+                else:
+                    results = []
+                    casted_results = []
+                    # hexagram_number = request.session.get('hexagram_number')
+                    # Reset values to start over
+                    request.session['button_clicks'] = 0
+                    request.session['casted_results'] = []
+                    request.session['hexagram_number'] = None
 
         else:
             results = []
             casted_results = []
-            # hexagram_number = request.session.get('hexagram_number')
-            # Reset values to start over
-            request.session['button_clicks'] = 0
             request.session['casted_results'] = []
+            request.session['button_clicks'] = 0
             request.session['hexagram_number'] = None
 
     else:
@@ -90,9 +128,8 @@ def toss_coins(request):
         'toss_results': results,
         'casted_results': request.session['casted_results'],
         'hexagram_number': hexagram_number,
+        'modified_hexagram_number': modified_hexagram_number,
         'new_toss': new_toss,
     }
     return render(request, "toss_coins.html", context=context)
-
-
 

@@ -60,11 +60,16 @@
             <div class="col-md-6">
                 <div class="box">
                     <h1>Your answer will appear here</h1>
+                    <br>
                     {% if hexagram_number %}
                     <div>
-                        <h2>Hexagram: {{ hexagram_number.number }}</h2>
-                        <p>Description: {{ hexagram_number.description }}</p>
-                        <p>Meaning: {{ hexagram_number.meaning }}</p>
+                        <h2>{{ hexagram_number.number }}</h2>
+                        <p>{{ hexagram_number.description }}</p>
+                        <p>{{ hexagram_number.meaning }}</p>
+                        <br>
+                        <h2>{{ modified_hexagram_number.number }}</h2>
+                        <p>{{ modified_hexagram_number.description }}</p>
+                        <p>{{ modified_hexagram_number.meaning }}</p>
                     </div>
                     {% endif %}
                 </div>
