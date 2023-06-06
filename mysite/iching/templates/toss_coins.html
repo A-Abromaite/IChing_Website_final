@@ -62,7 +62,9 @@
                     <h1>Your answer will appear here</h1>
                     {% if hexagram_number %}
                     <div>
-                        <h2>Hexagram Number: {{ hexagram_number }}</h2>
+                        <h2>Hexagram: {{ hexagram_number.number }}</h2>
+                        <p>Description: {{ hexagram_number.description }}</p>
+                        <p>Meaning: {{ hexagram_number.meaning }}</p>
                     </div>
                     {% endif %}
                 </div>
