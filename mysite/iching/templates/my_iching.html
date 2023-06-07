@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block "title" %}My I Ching{% endblock%}
+
+{% block "content"%}
+
+<h1>My I Ching</h1>
+
+    {% if saved_hexagrams %}
+        <h2>Saved Hexagrams:</h2>
+        <ul>
+            {% for hexagram in saved_hexagrams %}
+                <li>
+                    <h3>{{ hexagram.number }}</h3>
+                    <p>{{ hexagram.description }}</p>
+                    <p>Meaning: {{ hexagram.meaning }}</p>
+                    <p>My Note: {{hexagram.note}}</p>
+                    <!-- Display any other relevant information about the hexagram -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No saved hexagrams yet.</p>
+    {% endif %}
+
+
+
+{%endblock%}

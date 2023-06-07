@@ -10,7 +10,16 @@
 </head>
 <body>
 <div class="content-wrapper">
-
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'info' %}success{% endif %}"
+         role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
 <div>
     {% block "content" %}{% endblock %}
 </div>

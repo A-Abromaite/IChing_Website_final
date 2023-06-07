@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Hexagram, CastedResult, Coin, CoinTossCombination
+from .models import Hexagram, CastedResult, Coin, UserProfile
 from random import randint
-
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib.auth.forms import User
+from django.views.decorators.csrf import csrf_protect
+from django.contrib import messages
 
 def index(request):
     return render(request, 'index.html')
@@ -101,6 +105,15 @@ def toss_coins(request):
                     )
                     print(modified_hexagram_number)
 
+                    # Save the hexagrams to the user's profile
+                    # user_profile = UserProfile.objects.get(user=request.user)
+                    # user_profile.saved_hexagrams.add(hexagram_number)
+                    #
+                    # if modified_hexagram_number:
+                    #     user_profile.saved_hexagrams.add(modified_hexagram_number)
+                    #
+                    # user_profile.save()
+
         else:
             results = []
             casted_results = []
@@ -124,3 +137,38 @@ def toss_coins(request):
     }
     return render(request, "toss_coins.html", context=context)
 
+
+@csrf_protect
+def register(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        password2 = request.POST['password2']
+        if password == password2:
+            if User.objects.filter(username=username).exists():
+                messages.error(request, f'Username {username} is already taken!')
+                return redirect('register')
+            else:
+                if User.objects.filter(email=email).exists():
+                    messages.error(request, f'User with email address {email} is already registered!')
+                    return redirect('register')
+                else:
+                    user = User.objects.create_user(username=username, email=email, password=password)
+                    UserProfile.objects.create(user=user)
+
+                    messages.info(request, f'User {username} has been registered sucessfully!')
+                    return redirect('login')
+        else:
+            messages.error(request, 'Passwords do not match!')
+            return redirect('register')
+    return render(request, 'registration/register.html')
+
+@login_required
+def my_iching(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    saved_hexagrams = user_profile.saved_hexagrams.all()
+    context = {
+        'saved_hexagrams': saved_hexagrams
+    }
+    return render(request, 'my_iching.html', context=context)
