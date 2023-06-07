@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Coin(models.Model):
@@ -56,7 +58,16 @@ class Hexagram(models.Model):
     line4 = models.ForeignKey(to="Line", verbose_name="Line4", on_delete=models.SET_NULL, null=True, related_name="line4")
     line5 = models.ForeignKey(to="Line", verbose_name="Line5", on_delete=models.SET_NULL, null=True, related_name="line5")
     line6 = models.ForeignKey(to="Line", verbose_name="Line6", on_delete=models.SET_NULL, null=True, related_name="line6")
+    picture = models.ImageField(default="hexagrams/default.png", upload_to="hexagrams")
 
     def __str__(self):
         return f"{self.number}"
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    saved_hexagrams = models.ManyToManyField(Hexagram, related_name='saved_by')
+    date_saved = models.DateTimeField(auto_now_add=True)
+    note = models.TextField(verbose_name='Note', max_length=2000)
+
+    def __str__(self):
+        return f"{self.user.username}"
