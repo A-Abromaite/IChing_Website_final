@@ -131,7 +131,7 @@ a:hover {
 
 .about-text {
 	margin-left: 0px;
-	text-align: center;
+	text-align: justify;
 }
 
 .about-text p {
@@ -299,7 +299,7 @@ a:hover {
 .situation {
     font-size: 20px;
     margin-bottom:30px;
-    color: #690d22;
+    color: #871634;
     text-align:center;
     }
 
@@ -314,5 +314,6 @@ text-align: center
 }
 
 .your-guidance {
-text-align: center
+text-align: center;
+font-family: Herculanum;
 }
