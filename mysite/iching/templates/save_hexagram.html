@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block "title" %}Save Hexagram{% endblock %}
+
+{% block "content" %}
+<div class="container">
+    <h1>Save Hexagram</h1>
+    <form method="POST" action="{% url 'save_hexagram' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="hexagram_number">Hexagram Number:</label>
+            <input type="text" id="hexagram_number" name="hexagram_number" value="{{ hexagram_number }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="note">Note:</label>
+            <textarea id="note" name="note" rows="4" cols="50"></textarea>
+        </div>
+        <button type="submit" class="styled-button">Save</button>
+    </form>
+</div>
+{% endblock %}

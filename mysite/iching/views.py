@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Hexagram, CastedResult, Coin, UserProfile
 from random import randint
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
+from .forms import HexagramForm
 
 def index(request):
     return render(request, 'index.html')
@@ -106,13 +106,13 @@ def toss_coins(request):
                     print(modified_hexagram_number)
 
                     # Save the hexagrams to the user's profile
-                    # user_profile = UserProfile.objects.get(user=request.user)
-                    # user_profile.saved_hexagrams.add(hexagram_number)
-                    #
-                    # if modified_hexagram_number:
-                    #     user_profile.saved_hexagrams.add(modified_hexagram_number)
-                    #
-                    # user_profile.save()
+                    user_profile = UserProfile.objects.get(user=request.user)
+                    user_profile.saved_hexagrams.add(hexagram_number)
+
+                    if modified_hexagram_number:
+                        user_profile.saved_hexagrams.add(modified_hexagram_number)
+
+                    user_profile.save()
 
         else:
             results = []
@@ -172,3 +172,23 @@ def my_iching(request):
         'saved_hexagrams': saved_hexagrams
     }
     return render(request, 'my_iching.html', context=context)
+
+def save_hexagram(request):
+    if request.method == 'POST':
+        form = HexagramForm(request.POST)
+        if form.is_valid():
+            hexagram_id = form.cleaned_data['hexagram_id']
+            note = form.cleaned_data['note']
+
+            hexagram = Hexagram.objects.get(id=hexagram_id)
+            hexagram.note = note
+            hexagram.save()
+
+            return redirect('my_iching')  # Redirect to the "my_iching" page after saving the hexagram
+    else:
+        form = HexagramForm()
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'save_hexagram.html', context)

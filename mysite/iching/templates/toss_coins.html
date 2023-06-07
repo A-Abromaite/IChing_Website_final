@@ -82,6 +82,14 @@
                         <p class="hexagram-meaning">{{ modified_hexagram_number.meaning }}</p>
                     </div>
                     {% endif %}
+
+                    {% if new_toss %}
+                    <form method="POST" action="{% url 'save_hexagram' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="hexagram_number" value="{{ hexagram_number.number }}">
+                        <button type="submit" class="styled-button">Save</button>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
