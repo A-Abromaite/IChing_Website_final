@@ -64,8 +64,11 @@
                     {% endif %}
                     <br>
                     {% if hexagram_number %}
-                    <div class="hexagram-paragraphs">
-                        <h2 class="hexagram-h2">{{ hexagram_number.number }}</h2>
+                    <div class="hexagram-container">
+                        <img class="img-fluid hexagrams_img" src="{{ hexagram_number.picture.url }}"alt="Responsive image">
+                        <h2>{{ hexagram_number.number }}</h2>
+                    </div>
+                    <div>
                         <p class="hexagram-description">{{ hexagram_number.description }}</p>
                         <p class="hexagram-meaning">{{ hexagram_number.meaning }}</p>
                     </div>
@@ -76,8 +79,11 @@
                         <p class="situation">Your situation will change soon</p>
                     </div>
 
+                    <div class="hexagram-container">
+                        <img class="img-fluid hexagrams_img" src="{{ modified_hexagram_number.picture.url }}"alt="Responsive image">
+                        <h2>{{ modified_hexagram_number.number }}</h2>
+                    </div>
                     <div>
-                        <h2 class="hexagram-h2">{{ modified_hexagram_number.number }}</h2>
                         <p class="hexagram-description">{{ modified_hexagram_number.description }}</p>
                         <p class="hexagram-meaning">{{ modified_hexagram_number.meaning }}</p>
                     </div>

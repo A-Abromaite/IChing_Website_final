@@ -157,8 +157,8 @@ a:hover {
     width: 100%;
     height: 100vh;
     background-image: url("/static/img/toss.png");
-    background-size: auto 100%;
-    background-position: center;
+    background-size: auto 95%;
+    background-position: 45% 50%;
     background-repeat: no-repeat;
 }
 
@@ -309,11 +309,19 @@ a:hover {
     text-align:center;
     }
 
-.hexagram-h2 {
-text-align: center
-}
 
 .your-guidance {
 text-align: center;
 font-family: Herculanum;
+}
+
+.hexagrams_img {
+  max-width: 40px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.hexagram-container {
+  display: flex;
+  align-items: center;
 }
