@@ -9,5 +9,5 @@ urlpatterns = [
     path('my-iching/', views.my_iching, name='my_iching'),
     path('register/', views.register, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('save_hexagram/', views.save_hexagram, name='save_hexagram'),
+    # path('save_hexagram/', views.save_hexagram, name='save_hexagram'),
 ]

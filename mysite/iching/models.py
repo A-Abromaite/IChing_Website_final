@@ -65,9 +65,17 @@ class Hexagram(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    saved_hexagrams = models.ManyToManyField(Hexagram, related_name='saved_by')
+
+    def __str__(self):
+        return f"{self.user.username}"
+
+class HexagramInstance(models.Model):
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    hexagram_number = models.ForeignKey(Hexagram, on_delete=models.CASCADE, related_name='hexagram_instances')
+    modified_hexagram_number = models.ForeignKey(Hexagram, on_delete=models.CASCADE, null=True, blank=True, related_name='modified_hexagram_instances')
     date_saved = models.DateTimeField(auto_now_add=True)
     note = models.TextField(verbose_name='Note', max_length=2000)
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.user_profile.user.username} - {self.hexagram_number.number}"
+
