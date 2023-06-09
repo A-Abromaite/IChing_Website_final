@@ -173,22 +173,13 @@ def my_iching(request):
     }
     return render(request, 'my_iching.html', context=context)
 
-# def save_hexagram(request):
-#     if request.method == 'POST':
-#         form = HexagramInstanceForm(request.POST)
-#         if form.is_valid():
-#             hexagram_id = form.cleaned_data['hexagram_id']
-#             note = form.cleaned_data['note']
-#
-#             hexagram = Hexagram.objects.get(id=hexagram_id)
-#             hexagram.note = note
-#             hexagram.save()
-#
-#             return redirect('my_iching')  # Redirect to the "my_iching" page after saving the hexagram
-#     else:
-#         form = HexagramInstanceForm()
-#
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, 'save_hexagram.html', context)
+def save_hexagram(request):
+    hexagram_number = request.session.get('hexagram_number', '')
+    modified_hexagram_number = request.session.get('modified_hexagram_number', '')
+
+    context = {
+        'hexagram_number': hexagram_number,
+        'modified_hexagram_number': modified_hexagram_number,
+    }
+
+    return render(request, 'save_hexagram.html', context)

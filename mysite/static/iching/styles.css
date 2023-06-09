@@ -64,7 +64,7 @@ main {
 
 /* Style links */
 a {
-  color: #337ab7;
+  color: blue;
   text-decoration: none;
 }
 
@@ -290,9 +290,9 @@ a:hover {
     }
 
 .hexagram-meaning {
-    font-size: 20px;
-    margin-top: 30px;
-    margin-bottom:30px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom:20px;
     margin-left: 20px;
     margin-right: 20px;
     text-align: justify;
@@ -300,13 +300,13 @@ a:hover {
 
 .situation {
     font-size: 20px;
-    margin-bottom:30px;
+    margin-bottom:20px;
     color: #871634;
     text-align:center;
     }
 
 .hexagram-description {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
     text-align:center;
     }
@@ -334,4 +334,8 @@ margin-top:10%
 
 .login-custom {
 margin-left:10%
+}
+
+.styled-link{
+color: black
 }

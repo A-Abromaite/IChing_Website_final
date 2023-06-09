@@ -89,6 +89,14 @@
                     </div>
                     {% endif %}
 
+                    {% if user.is_authenticated and hexagram_number %}
+                    <!-- Button visible for logged-in users -->
+                    <div class="button-container">
+                        <button type="button" class="styled-button">
+                            <a href="{% url 'save_hexagram' %}" class="styled-link">Save Guidance</a>
+                        </button>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
