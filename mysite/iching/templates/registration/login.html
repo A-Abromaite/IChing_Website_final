@@ -3,33 +3,32 @@
 {% block "title" %}Login{% endblock %}
 
 {% block "content" %}
-
-  {% if form.errors %}
+<div class="registration-custom login-custom">
+    {% if form.errors %}
     <p>Login unsuccessful. Please try again!</p>
-  {% endif %}
-  
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Please login!</p>
     {% endif %}
-  {% endif %}
-  
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>Username: </td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>Password: </td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="Login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
-  
-  <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
-  
+
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Please login!</p>
+    {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="Login"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+    <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
+</div>
 {% endblock %}
