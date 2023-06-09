@@ -10,7 +10,7 @@
 </head>
 <nav class="navigation">
     <ul>
-        <li><a href="#instructions">Instructions</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item"><a class="nav-link" href="#">
             <svg class="bi bi-person" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
