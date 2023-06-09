@@ -86,7 +86,11 @@ def toss_coins(request):
                     line5__line=session_results[4]["line"],
                     line6__line=session_results[5]["line"],
                 )
+
+                request.session['hexagram_number'] = hexagram_number.id
+
                 print(session_results)
+                print(hexagram_number)
                 new_toss = True
 
                 if any(result["name"] in ["HHH", "TTT"] for result in session_results):
@@ -103,16 +107,12 @@ def toss_coins(request):
                         line5__line=modified_results[4]["line"],
                         line6__line=modified_results[5]["line"],
                     )
+
+                    request.session['modified_hexagram_number'] = modified_hexagram_number.id
+
+                    print(modified_results)
                     print(modified_hexagram_number)
 
-                    # Save the hexagrams to the user's profile
-                    # user_profile = UserProfile.objects.get(user=request.user)
-                    # user_profile.saved_hexagrams.add(hexagram_number)
-                    #
-                    # if modified_hexagram_number:
-                    #     user_profile.saved_hexagrams.add(modified_hexagram_number)
-                    #
-                    # user_profile.save()
 
         else:
             results = []
@@ -174,8 +174,8 @@ def my_iching(request):
     return render(request, 'my_iching.html', context=context)
 
 def save_hexagram(request):
-    hexagram_number = request.session.get('hexagram_number', '')
-    modified_hexagram_number = request.session.get('modified_hexagram_number', '')
+    hexagram_number = request.session.get('hexagram_number')
+    modified_hexagram_number = request.session.get('modified_hexagram_number')
 
     context = {
         'hexagram_number': hexagram_number,
