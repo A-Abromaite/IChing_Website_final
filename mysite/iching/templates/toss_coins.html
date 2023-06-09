@@ -65,7 +65,7 @@
                     <br>
                     {% if hexagram_number %}
                     <div class="hexagram-container">
-                        <img class="img-fluid hexagrams_img" src="{{ hexagram_number.picture.url }}"alt="Responsive image">
+                        <img class="img-fluid hexagrams_img" src="{{ hexagram_number.picture.url }}">
                         <h2>{{ hexagram_number.number }}</h2>
                     </div>
                     <div>
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="hexagram-container">
-                        <img class="img-fluid hexagrams_img" src="{{ modified_hexagram_number.picture.url }}"alt="Responsive image">
+                        <img class="img-fluid hexagrams_img" src="{{ modified_hexagram_number.picture.url }}">
                         <h2>{{ modified_hexagram_number.number }}</h2>
                     </div>
                     <div>
@@ -93,5 +93,5 @@
             </div>
         </div>
     </div>
-
+</div>
     {% endblock %}

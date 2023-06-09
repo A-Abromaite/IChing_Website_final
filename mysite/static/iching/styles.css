@@ -142,22 +142,23 @@ a:hover {
     margin-top: 30px;
 }
 
-.custom-footer {
+.footer {
   background-color: #737573;
   color: white;
   height: 50px;
   font-family: Baskerville, serif;
   font-size: 16px;
-  display: flex;
+  margin-bottom: 0px;
   align-items: center; /* Align the content vertically in the center */
   justify-content: center; /* Align the content horizontally in the center */
+  display: flex;
 }
 
 .toss-container {
     width: 100%;
     height: 100vh;
     background-image: url("/static/img/toss.png");
-    background-size: auto 95%;
+    background-size: auto 100%;
     background-position: 45% 50%;
     background-repeat: no-repeat;
 }
@@ -253,17 +254,16 @@ a:hover {
     width:500px;
     height:650px;
     border:5px solid black;
-    margin: 40px auto;
+    margin: 50px auto;
     text-align: center;
     position: relative;
-
 }
 
 .box2{
     width:500px;
     height:650px;
     border:5px solid black;
-    margin: 40px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -325,3 +325,4 @@ font-family: Herculanum;
   display: flex;
   align-items: center;
 }
+
