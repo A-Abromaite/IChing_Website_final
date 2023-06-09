@@ -201,9 +201,11 @@ a:hover {
 .navigation {
     background-color: rgba(128, 128, 128, 0.5);
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
+    text-align: center;
+
 }
 
 .navigation ul {
@@ -254,7 +256,7 @@ a:hover {
     width:500px;
     height:650px;
     border:5px solid black;
-    margin: 50px auto;
+    margin: 60px auto;
     text-align: center;
     position: relative;
 }
@@ -263,7 +265,7 @@ a:hover {
     width:500px;
     height:650px;
     border:5px solid black;
-    margin: 50px auto;
+    margin: 60px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
