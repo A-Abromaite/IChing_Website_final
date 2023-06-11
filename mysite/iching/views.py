@@ -7,6 +7,7 @@ from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 import datetime
+
 def index(request):
     return render(request, 'index.html')
 
@@ -119,6 +120,7 @@ def toss_coins(request):
             request.session['casted_results'] = []
             request.session['button_clicks'] = 0
             request.session['hexagram_number'] = None
+            request.session['modified_hexagram_number'] = None
 
     else:
         results = []
@@ -126,6 +128,7 @@ def toss_coins(request):
         request.session['casted_results'] = []
         request.session['button_clicks'] = 0
         request.session['hexagram_number'] = None
+        request.session['modified_hexagram_number'] = None
 
     context = {
         'toss_results': results,
@@ -172,20 +175,20 @@ def my_iching(request):
     }
     return render(request, 'my_iching.html', context=context)
 
-import datetime
-from .models import HexagramInstance
-
 def save_hexagram(request):
     hexagram_id = request.session.get('hexagram_number')
     modified_hexagram_id = request.session.get('modified_hexagram_number')
     note = request.POST.get('note')
 
     hexagram_number = Hexagram.objects.get(id=hexagram_id)
-    modified_hexagram_number = Hexagram.objects.get(id=modified_hexagram_id)
+    modified_hexagram_number = None
+
+    if modified_hexagram_id:
+        modified_hexagram_number = Hexagram.objects.get(id=modified_hexagram_id)
 
     timestamp = datetime.datetime.now()
 
-    if request.method == 'POST':
+    if request.method == 'POST' and modified_hexagram_number:
         # Create a new HexagramInstance object and save it
         hexagram_instance = HexagramInstance(
             user_profile=request.user.userprofile,
@@ -204,3 +207,5 @@ def save_hexagram(request):
     }
 
     return render(request, 'save_hexagram.html', context)
+
+

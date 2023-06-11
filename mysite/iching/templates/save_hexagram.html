@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{%block "title" %}Save Guidance{% endblock%}
-
 {% block "content"%}
 
 <h1>Save Guidance</h1>
@@ -13,11 +11,13 @@
 <p>Description: {{ hexagram_number.description }}</p>
 <p>Meaning: {{ hexagram_number.meaning }}</p>
 
-<h2>Modified Hexagram Number</h2>
-<p>Number: {{ modified_hexagram_number.number }}</p>
-<p>Description: {{ modified_hexagram_number.description }}</p>
-<p>Meaning: {{ modified_hexagram_number.meaning }}</p>
-<br>
+{% if modified_hexagram_number %}
+  <h2>Modified Hexagram Number</h2>
+  <p>Number: {{ modified_hexagram_number.number }}</p>
+  <p>Description: {{ modified_hexagram_number.description }}</p>
+  <p>Meaning: {{ modified_hexagram_number.meaning }}</p>
+  <br>
+{% endif %}
 
 <h2>Add Note</h2>
 <form method="POST">
