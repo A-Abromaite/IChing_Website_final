@@ -191,6 +191,8 @@ def save_hexagram(request):
         )
         hexagram_instance.save()
 
+        return redirect('my_iching')
+
     context = {
         'hexagram_number': hexagram_number,
         'modified_hexagram_number': modified_hexagram_number,

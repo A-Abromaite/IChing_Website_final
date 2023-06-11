@@ -11,8 +11,8 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 
 .content-wrapper {
   min-height: 100%;
-  /* Adjust padding/margin as needed */
-  padding-bottom: 60px; /* Height of the footer */
+  display: flex;
+  flex-direction:column;
 }
 
 /* Set font and background color */
@@ -100,6 +100,11 @@ a:hover {
   display: inline-block;
 }
 
+.backtotop-button {
+margin-bottom: 50px;
+
+}
+
 .button-container a {
   margin-right: 10px; /* Adjust the margin as needed to create spacing between buttons */
   margin-left: 10px; /* Adjust the margin as needed to create spacing between buttons */
@@ -148,10 +153,11 @@ a:hover {
   height: 50px;
   font-family: Baskerville, serif;
   font-size: 16px;
-  margin-bottom: 0px;
+  margin-top: auto;
   align-items: center; /* Align the content vertically in the center */
   justify-content: center; /* Align the content horizontally in the center */
   display: flex;
+  z-index: 1;
 }
 
 .toss-container {
@@ -329,13 +335,21 @@ font-family: Herculanum;
 }
 
 .registration-custom {
-margin-top:10%
+    margin-top:10%
 }
 
 .login-custom {
-margin-left:10%
+    margin-left:10%
 }
 
 .styled-link{
-color: black
+    color: black
 }
+
+.my-iching {
+    margin-top: 70px;
+}
+
+.changing-to {
+    color: #871634;
+    }

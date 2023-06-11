@@ -2,29 +2,42 @@
 {% load static %}
 
 {% block "content"%}
-
-<h1>Save Guidance</h1>
-<p>{{ timestamp }}</p>
-
-<h2>Hexagram Number</h2>
-<p>Number: {{ hexagram_number.number }}</p>
-<p>Description: {{ hexagram_number.description }}</p>
-<p>Meaning: {{ hexagram_number.meaning }}</p>
-
-{% if modified_hexagram_number %}
-  <h2>Modified Hexagram Number</h2>
-  <p>Number: {{ modified_hexagram_number.number }}</p>
-  <p>Description: {{ modified_hexagram_number.description }}</p>
-  <p>Meaning: {{ modified_hexagram_number.meaning }}</p>
-  <br>
-{% endif %}
-
-<h2>Add Note</h2>
-<form method="POST">
-    {% csrf_token %}
-    <textarea name="note" rows="4" cols="50"></textarea>
+<div class="container my-iching">
+    <h1 class="heading">Save Guidance</h1>
+    <p class="text-muted">{{ timestamp }}</p>
     <br>
-    <button type="submit">Save</button>
-</form>
+    <div class="hexagram-container">
+        <img class="img-fluid hexagrams_img" src="{{ hexagram_number.picture.url }}">
+        <h2>{{ hexagram_number.number }}</h2>
+    </div>
+    <div>
+        <p>{{ hexagram_number.description }}</p>
+        <br>
+        <p>{{ hexagram_number.meaning }}</p>
+        <br>
+    </div>
 
+    {% if modified_hexagram_number %}
+    <p class="changing-to">Changing to:</p>
+    <br>
+    <div class="hexagram-container">
+        <img class="img-fluid hexagrams_img" src="{{ modified_hexagram_number.picture.url }}">
+        <h2>{{ modified_hexagram_number.number }}</h2>
+    </div>
+    <div>
+        <p>{{ modified_hexagram_number.description }}</p>
+        <br>
+        <p>{{ modified_hexagram_number.meaning }}</p>
+        <br>
+    </div>
+    {% endif %}
+
+    <h2>Add a note</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="note" rows="4" cols="56"></textarea>
+        <br>
+        <button type="submit" class="styled-button">Save</button>
+    </form>
+</div>
 {% endblock %}
