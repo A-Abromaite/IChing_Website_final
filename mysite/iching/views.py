@@ -166,14 +166,6 @@ def register(request):
             return redirect('register')
     return render(request, 'registration/register.html')
 
-@login_required
-def my_iching(request):
-    user_profile = UserProfile.objects.get(user=request.user)
-    saved_hexagrams = user_profile.saved_hexagrams.all()
-    context = {
-        'saved_hexagrams': saved_hexagrams
-    }
-    return render(request, 'my_iching.html', context=context)
 
 def save_hexagram(request):
     hexagram_id = request.session.get('hexagram_number')
@@ -208,4 +200,12 @@ def save_hexagram(request):
 
     return render(request, 'save_hexagram.html', context)
 
+@login_required
+def my_iching(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    saved_hexagrams = HexagramInstance.objects.filter(user_profile=user_profile)
 
+    context = {
+        'saved_hexagrams': saved_hexagrams
+    }
+    return render(request, 'my_iching.html', context=context)
