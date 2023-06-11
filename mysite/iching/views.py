@@ -205,7 +205,7 @@ def save_hexagram(request):
 @login_required
 def my_iching(request):
     user_profile = UserProfile.objects.get(user=request.user)
-    saved_hexagrams = HexagramInstance.objects.filter(user_profile=user_profile)
+    saved_hexagrams = HexagramInstance.objects.filter(user_profile=user_profile).order_by("-date_saved")
 
     context = {
         'saved_hexagrams': saved_hexagrams
