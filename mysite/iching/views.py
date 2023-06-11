@@ -180,7 +180,7 @@ def save_hexagram(request):
 
     timestamp = datetime.datetime.now()
 
-    if request.method == 'POST' and modified_hexagram_number:
+    if request.method == 'POST' and hexagram_number:
         # Create a new HexagramInstance object and save it
         hexagram_instance = HexagramInstance(
             user_profile=request.user.userprofile,
