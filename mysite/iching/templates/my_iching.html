@@ -4,28 +4,40 @@
 {% block "title" %}My I Ching{% endblock %}
 
 {% block "content" %}
+<div class="container my-iching">
 
-<h1>My I Ching</h1>
+
+<h1 class="heading">My I Ching</h1>
+    <br>
 
 {% if saved_hexagrams %}
-    <h2>Saved Hexagrams:</h2>
     <ul>
         {% for hexagram_instance in saved_hexagrams %}
             <li>
+                <p class="text-muted">{{ hexagram_instance.date_saved }}</p>
+                <div class="hexagram-container">
+                    <img class="img-fluid hexagrams_img" src="{{ hexagram_instance.hexagram_number.picture.url }}">
                 <h3>{{ hexagram_instance.hexagram_number.number }}</h3>
+                </div>
                 <p>{{ hexagram_instance.hexagram_number.description }}</p>
-                <p>Meaning: {{ hexagram_instance.hexagram_number.meaning }}</p>
+                <p>{{ hexagram_instance.hexagram_number.meaning }}</p>
+
                 {% if hexagram_instance.modified_hexagram_number %}
-                    <h4>Modified Hexagram:</h4>
-                    <p>{{ hexagram_instance.modified_hexagram_number.number }}</p>
+                <p class="changing-to">Changing to:</p>
+                <div class="hexagram-container">
+                    <img class="img-fluid hexagrams_img" src="{{ hexagram_instance.modified_hexagram_number.picture.url }}">
+                    <h3>{{ hexagram_instance.modified_hexagram_number.number }}</h3>
+                </div>
+                <p>{{ hexagram_instance.modified_hexagram_number.description }}</p>
+                <p>{{ hexagram_instance.modified_hexagram_number.meaning }}</p>
                 {% endif %}
-                <p>Date Saved: {{ hexagram_instance.date_saved }}</p>
-                <p>Note: {{ hexagram_instance.note }}</p>
+                <p>My note: {{ hexagram_instance.note }}</p>
+                <hr>
             </li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No saved hexagrams yet.</p>
 {% endif %}
-
+</div>
 {% endblock %}
