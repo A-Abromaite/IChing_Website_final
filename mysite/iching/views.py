@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Hexagram, CastedResult, Coin, UserProfile
+from .models import Hexagram, CastedResult, Coin, UserProfile, HexagramInstance
 from random import randint
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
-from .forms import HexagramInstanceForm
-
+import datetime
 def index(request):
     return render(request, 'index.html')
 
@@ -173,16 +172,35 @@ def my_iching(request):
     }
     return render(request, 'my_iching.html', context=context)
 
+import datetime
+from .models import HexagramInstance
+
 def save_hexagram(request):
     hexagram_id = request.session.get('hexagram_number')
     modified_hexagram_id = request.session.get('modified_hexagram_number')
+    note = request.POST.get('note')
 
     hexagram_number = Hexagram.objects.get(id=hexagram_id)
     modified_hexagram_number = Hexagram.objects.get(id=modified_hexagram_id)
 
+    timestamp = datetime.datetime.now()
+
+    if request.method == 'POST':
+        # Create a new HexagramInstance object and save it
+        hexagram_instance = HexagramInstance(
+            user_profile=request.user.userprofile,
+            hexagram_number=hexagram_number,
+            modified_hexagram_number=modified_hexagram_number,
+            date_saved=timestamp,
+            note=note
+        )
+        hexagram_instance.save()
+
     context = {
         'hexagram_number': hexagram_number,
         'modified_hexagram_number': modified_hexagram_number,
+        'timestamp': timestamp,
+        'note': note,
     }
 
     return render(request, 'save_hexagram.html', context)

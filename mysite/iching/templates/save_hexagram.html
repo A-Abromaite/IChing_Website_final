@@ -1,28 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 
-{%block "title" %}Home{% endblock%}
+{%block "title" %}Save Guidance{% endblock%}
 
 {% block "content"%}
 
-  <h1>Save Hexagram</h1>
+<h1>Save Guidance</h1>
+<p>{{ timestamp }}</p>
 
-  <h2>Hexagram Number</h2>
-  <p>Number: {{ hexagram_number.number }}</p>
-  <p>Description: {{ hexagram_number.description }}</p>
-  <p>Meaning: {{ hexagram_number.meaning }}</p>
+<h2>Hexagram Number</h2>
+<p>Number: {{ hexagram_number.number }}</p>
+<p>Description: {{ hexagram_number.description }}</p>
+<p>Meaning: {{ hexagram_number.meaning }}</p>
 
-  <h2>Modified Hexagram Number</h2>
-  <p>Number: {{ modified_hexagram_number.number }}</p>
-  <p>Description: {{ modified_hexagram_number.description }}</p>
-  <p>Meaning: {{ modified_hexagram_number.meaning }}</p>
+<h2>Modified Hexagram Number</h2>
+<p>Number: {{ modified_hexagram_number.number }}</p>
+<p>Description: {{ modified_hexagram_number.description }}</p>
+<p>Meaning: {{ modified_hexagram_number.meaning }}</p>
+<br>
 
-  <h2>Add Note</h2>
-  <form method="POST">
+<h2>Add Note</h2>
+<form method="POST">
     {% csrf_token %}
     <textarea name="note" rows="4" cols="50"></textarea>
     <br>
     <button type="submit">Save</button>
-  </form>
+</form>
 
 {% endblock %}
