@@ -20,7 +20,7 @@
                 <h3>{{ hexagram_instance.hexagram_number.number }}</h3>
                 </div>
                 <p>{{ hexagram_instance.hexagram_number.description }}</p>
-                <p>{{ hexagram_instance.hexagram_number.meaning }}</p>
+                <p><span class="text-decoration-underline">My guidance:</span> {{ hexagram_instance.hexagram_number.meaning }}</p>
 
                 {% if hexagram_instance.modified_hexagram_number %}
                 <p class="changing-to">Changing to:</p>
@@ -29,9 +29,10 @@
                     <h3>{{ hexagram_instance.modified_hexagram_number.number }}</h3>
                 </div>
                 <p>{{ hexagram_instance.modified_hexagram_number.description }}</p>
-                <p>{{ hexagram_instance.modified_hexagram_number.meaning }}</p>
+                <p><span class="text-decoration-underline">My guidance:</span> {{ hexagram_instance.modified_hexagram_number.meaning }}</p>
                 {% endif %}
-                <p>My note: {{ hexagram_instance.note }}</p>
+                <br>
+                <p><span class="text-decoration-underline">My note:</span> {{ hexagram_instance.note }}</p>
                 <hr>
             </li>
         {% endfor %}

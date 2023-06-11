@@ -20,7 +20,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = ["user"]
 
 class HexagramIntanceAdmin(admin.ModelAdmin):
-    list_display = ["user_profile", "hexagram_number", "modified_hexagram_number", "date_saved", "note"]
+    list_display = ["user_profile", "hexagram_number", "modified_hexagram_number", "date_saved"]
 
 # Register your models here.
 admin.site.register(Coin, CoinAdmin)
