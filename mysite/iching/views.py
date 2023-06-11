@@ -174,8 +174,11 @@ def my_iching(request):
     return render(request, 'my_iching.html', context=context)
 
 def save_hexagram(request):
-    hexagram_number = request.session.get('hexagram_number')
-    modified_hexagram_number = request.session.get('modified_hexagram_number')
+    hexagram_id = request.session.get('hexagram_number')
+    modified_hexagram_id = request.session.get('modified_hexagram_number')
+
+    hexagram_number = Hexagram.objects.get(id=hexagram_id)
+    modified_hexagram_number = Hexagram.objects.get(id=modified_hexagram_id)
 
     context = {
         'hexagram_number': hexagram_number,
