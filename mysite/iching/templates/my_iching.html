@@ -15,19 +15,24 @@
         {% for hexagram_instance in saved_hexagrams %}
             <li>
                 <p class="text-muted">{{ hexagram_instance.date_saved }}</p>
+                <br>
                 <div class="hexagram-container">
                     <img class="img-fluid hexagrams_img" src="{{ hexagram_instance.hexagram_number.picture.url }}">
                 <h3>{{ hexagram_instance.hexagram_number.number }}</h3>
                 </div>
+                <br>
                 <p>{{ hexagram_instance.hexagram_number.description }}</p>
                 <p><span class="text-decoration-underline">My guidance:</span> {{ hexagram_instance.hexagram_number.meaning }}</p>
+                <br>
 
                 {% if hexagram_instance.modified_hexagram_number %}
                 <p class="changing-to">Changing to:</p>
+                <br>
                 <div class="hexagram-container">
                     <img class="img-fluid hexagrams_img" src="{{ hexagram_instance.modified_hexagram_number.picture.url }}">
                     <h3>{{ hexagram_instance.modified_hexagram_number.number }}</h3>
                 </div>
+                <br>
                 <p>{{ hexagram_instance.modified_hexagram_number.description }}</p>
                 <p><span class="text-decoration-underline">My guidance:</span> {{ hexagram_instance.modified_hexagram_number.meaning }}</p>
                 {% endif %}
