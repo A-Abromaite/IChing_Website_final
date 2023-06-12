@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 import datetime
 
+
 def index(request):
     return render(request, 'index.html')
 
@@ -147,6 +148,20 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
+
+        if not username:
+            messages.error(request, 'Username is required!')
+            return redirect('register')
+        if not email:
+            messages.error(request, 'Email is required!')
+            return redirect('register')
+        if not password:
+            messages.error(request, 'Password is required!')
+            return redirect('register')
+        if not password2:
+            messages.error(request, 'Confirm password is required!')
+            return redirect('register')
+
         if password == password2:
             if User.objects.filter(username=username).exists():
                 messages.error(request, f'Username {username} is already taken!')
@@ -201,6 +216,7 @@ def save_hexagram(request):
     }
 
     return render(request, 'save_hexagram.html', context)
+
 
 @login_required
 def my_iching(request):

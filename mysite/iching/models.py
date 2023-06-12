@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 
+
 # Create your models here.
 class Coin(models.Model):
     COIN_SIDES = [
@@ -78,7 +79,6 @@ class Hexagram(models.Model):
 
     def __str__(self):
         return f"{self.number}"
-
 
 
 class UserProfile(models.Model):

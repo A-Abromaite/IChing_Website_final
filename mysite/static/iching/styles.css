@@ -101,7 +101,7 @@ a:hover {
 }
 
 .backtotop-button {
-margin-bottom: 50px;
+  margin-bottom: 50px;
 
 }
 
@@ -319,8 +319,8 @@ margin-bottom: 50px;
 
 
 .your-guidance {
-text-align: center;
-font-family: Herculanum;
+    text-align: center;
+    font-family: Herculanum;
 }
 
 .hexagrams_img {
@@ -335,21 +335,21 @@ font-family: Herculanum;
 }
 
 .registration-custom {
-    margin-top:10%
+  margin-top:10%
 }
 
 .login-custom {
-    margin-left:10%
+  margin-left:10%
 }
 
 .styled-link{
-    color: black
+  color: black
 }
 
 .my-iching {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 .changing-to {
-    color: #871634;
+  color: #871634;
     }
